@@ -1,0 +1,131 @@
+<style>
+    /* Importing fonts from Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+  body{ background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71)
+  43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
+  'Arima Madurai', cursive; }
+
+
+.wrapper {
+    max-width: 350px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced185, -13px -13px 20px ##ffffff7a;
+}
+
+.logo {
+    width: 80px;
+    margin: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f,
+        0px 0px 0px 5px #ecf0f3,
+        8px 8px 15px #a7aaa7,
+        -8px -8px 15px #fff;
+}
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #555;
+}
+
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 10px 15px 10px 10px;
+    /* border: 1px solid red; */
+}
+
+.wrapper .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.wrapper .form-field .fas {
+    color: #555;
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #03A9F4;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #b1b1b1,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+.wrapper .btn:hover {
+    background-color: #039BE5;
+}
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #03A9F4;
+}
+
+.wrapper a:hover {
+    color: #039BE5;
+}
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}
+</style>
+
+<div class="wrapper">
+        <div class="logo">
+            <img style="position: 20px 20px ;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHwAAAB8CAMAAACcwCSMAAAAzFBMVEX///84rgBFtwBKugBDtAA8sQBQvwE+tAAxqAA0qwEtpgFaxAD///0noQA7twBEuwD1+vIAnQAAmQD9//nq9uMysQAmrAAlqAAaogDe8Njy++zk9Nnd89C85KWf2XyF0GFxy01pxzGI0luN0nBsxjiz45rH6LXP7MJevzJwzEey3aFgvz2P0XdewiRPuBWY1YGAy2Wk1pKe1InT7M9FsByz26hgvkZ4wGV1xlpvwU2KyXtmvFZatkU9rSdPtzKVzYu93rN+vniUyJFpt2QbGQEJAAAEcUlEQVRoge2ZW3PiOBBGZWNbNpFv2PKNZJOZbPAMkAt4CBMMA0z+/3+almzAbCVVW1uyqdrSeeTlVEtfdwtASCKRSCQSiUQikUgkEomkRchltEEWDq+vO9d62fXNX7d3X66ujK+disnw5v5vwzWMK4bx0JWWoGB0bzgumCs1yPOO5EF+6zhMbJzkV2EngcvG31zVaMDd370O1MH4m9MDjHO9cd+6maB8QnsV5/bW8wYxm1JV7R0wXPfx62Nld1tuc4KGT456krvO9GZ6iJ0RtCtHOcUqh6lV5zl87h3dt61mnaAR1dQjzssw/+Yeb959aHe051QDKjXu5d6z455y5wzbVKNU1zWt1tM7L5w4zdS7rbqDX1THtZ3O4Apwr9eIfbtdvop0XMvxCI2jRupZ8EdtuoeRDmDw6/gazekp9ZW81dn6U6nlOk3BrZ3L3Zc23VmscLuOaYFm9Jj62u8IWafkk2adR4rC9XQH961pDTvTP4k49Zvs48+DH0oljxYor9zN2p25ADf60nsIP/q8iLlciVcopDx25/5UiNxwH6cfvEhm/NQVaxJ4r5Vcb8ixmLhdsVnl3ub/3FBLi8ujED0fW+5UOxWzTfluhn01GQfN7HlrLo9mKI/1KvX6yY5/CnFXcoOtSzptlJNtLMWyrDXy6szz4g9yOhSz0L5z9WMP5jamd/mh+NBixAWaVndft3zlp1MRZuDWNdiauH9h4xPTtzr6YczcK5TWoT/KWeywqMn6zOU9dT7CWNU0XR/VctOyfoSotGr30Y41uhDkRuN6R9P77I3NUAwZI5U83h67vVk9FTfVi1quOm9kDpMM62CHwJmm2fcIy7xlndnpayDs9RQ+cTW78NdgwVs63kGrbcwE2ixhsTurXXn6ZB7/Bwi6cys3hPiN7Jjdijzo837ikTLmoW+UznIg8Nk4w9ytshZ6gf3F5jlsjWWyghs3zXN59Etc3Yz0oNYwjlbwdmJ2D239Ai37JoPbq4G39IQ+lwl6wQc3359rsCdjVPgw5cyD3GLyKBbWY0f7kHI5GyBgDzO2y0rizdAi6Z/sVpwILrtiTg+F64r1ihYsZRnM2XXSP9jNflymrfz4FExgYuvMrcN1j2GqWUmBSAju2g7qoq2vRhkbXJUbjjxMYyuB2134/Zpk3ZoaGD7Rg1uJl2gZw4BBpc3NZrLZtWdmZJOodiuwRzM/2SIysLnd37arBoJpvUIg1mtUgrwY9Pu2nWyK1t0Q5F1kVXIrSQsol125bW8+fNqKJ1zHTA3ZXqLNAu1tOPaN2Gn6KYQ9l6u29oPfO7QGuS3kdf4vSfsxkyeLIgxA7e86dEP5ZQLHnpSQf9/23zt1A6vEhPbyIOy231HYjhC0hakK573w/VXHbgbY7T367Q+6Lhyx2peJXcJjorzIPyhkk9jearC7gBrqTQeDcD9o+5fVz9gPdvvyQm6S+dv9+EJySPz7tsvJek74PrvUlQPbrv61+oj0AhPmxIX+opVIJBKJRCKRSCQSyf+YPxocX/z1bdBrAAAAAElFTkSuQmCC  alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            <img src="/images/Group 40.png" alt="">
+      
+        </div>
+        <form class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="userName" id="userName" placeholder="Username">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password">
+            </div>
+            <button class="btn mt-3">Login</button>
+        </form>
+        <div class="text-center fs-6">
+            <a href="#">Forget password?</a>
+        </div>
+    </div>

@@ -1,0 +1,401 @@
+
+
+
+<style>
+
+  body{ background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71)
+  43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
+  'Arima Madurai', cursive; }
+
+</style>
+<div class="row col-12">
+
+  <div
+    class="col-lg-2 col-12 col-sm-3 ml-3 m-sm-0 m-xl-3 col-md-4 d-none d-md-block container-fluid bg-gradient m-1"
+    style="border-radius:15px ; "
+  >
+
+    <span
+      class="dot mt-3"
+      style=" background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXAS-s6-wcK3enD1Z6kuBGONuyTKR6M5a3KeAI9w_ACQ&s) ; background-position:-35px -24px ;  height: 60px;
+          width: 60px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;"
+    ></span>
+    <div
+      class="bg-danger bg-gradient col-9 py-1 mt-5 text-center"
+      style="border-radius:167px ; "
+    >
+      <h6><i class="fa-solid fa-user-gear"></i> Supertramp </h6>
+    </div>
+
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5"
+      style="border-radius:14px ; "
+    >
+      <h6>Profile</h6>
+    </div>
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5"
+      style="border-radius:14px  ;"
+    >
+      <h6>PRO management</h6>
+    </div>
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5 mb-3"
+      style="border-radius:14px  ;"
+    >
+      <h6>Help desk</h6>
+    </div>
+
+  </div>
+
+  <div
+    class="container mt-5 col-lg-8 col-md-6 co-sm-4"
+    style="font-size:15px ;"
+  >
+
+<div class="col-lg-8 text-white " >
+  <h4 class="m-lg-6 mt-3 " style=" font-family: 'Arima Madurai', cursive; font-weight: 700;" >OFFER MANAGEMENT- <h5 style="color: #DE566D;">Category Offers </h5></h4>
+  
+  <form action="" method="POST" id="caton">
+  <div class="form-group">
+    <label>Offer Name</label>
+    <input type="text" required class="form-control" name="Offername"  placeholder="Enter Offer Name">
+   
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" required class="form-control py-5" name="description"  placeholder="Description">
+   
+  </div>  <div class="form-group">
+    <label>Offer Percentage</label>
+    <input type="number" required class="form-control" name="offer"  placeholder="Min: offer Percentage">
+    <input type="text" required class="form-control" name="offer-Type"  value="Category Offer" hidden>
+   
+  </div>
+   <div class="form-group">
+     <label for="inputState">Catogory</label>
+      <select id="inputState"   name="category" required class="form-control">
+        <option  selected>Choose...</option>
+        {{#each Data}}
+        <option >{{this.category}}</option>
+        {{/each}}  
+              
+      </select>
+   
+  </div>
+  <button type="submit" class="btn btn-primary" onclick="addcategoryoffer()" >Add New offer </button>
+
+
+</form>
+ 
+
+
+
+
+
+</div>
+</div>
+   
+<hr>
+<hr>
+<div class="container  col-12 col-lg-7" >
+ <h1 class="bg-gradient mt-4 text-white ">Category Offer Details</h1>
+    <table class="table table-striped table-responsive table-dark">
+      <thead>
+        <tr>
+          <th  scope="col-4">NO:</th>
+          <th scope="col-4">Offer Name</th>
+          <th class="d-none d-lg-block" scope="col-4">Description</th>
+          <th scope="col-4">offer percentage</th>
+           <th scope="col-4">Currently Applied</th>
+ <th scope="col-4">Category</th>
+    
+        </tr>
+      </thead>
+      <tbody>
+      {{#each categoryoffers}}
+          <tr>
+            <th scope="row"><span
+                class="create_index"
+              ></span></th>
+            <td>{{this.Offername}}</td>
+            <td class="text-truncate d-none d-lg-block">{{this.description}}</td>
+              <td>{{this.offer}}</td>
+            <td>{{this.category}}</td>
+            <td ><button class="btn btn-danger" onclick="deletefromproductoffer('{{this._id}}')">Delete</button></td>
+         
+</tr>
+{{/each}}
+
+      </tbody>
+    </table>
+
+</div>
+    
+  </div>
+
+</div>
+<hr>
+<hr style="border:20px ;">
+<div class="container col-7">
+ <h4 class="m-lg-6 mt-3 text-white " style=" font-family: 'Arima Madurai', cursive; font-weight: 700;" >OFFER MANAGEMENT- <h5 style="color: #DE566D;">Product Offers</h5></h4>
+  <div class="row g-3">
+  <div class="col-sm-5">
+    <div class="form-outline">
+      <form action="" id="caton2">
+      <input type="text" id="form10Example1" name="Offername" class="form-control bg-light" />
+      <label class="form-label text-dark" for="form10Example1">Offer Name</label>
+    </div>
+  </div>
+  <div class=" col-12  col-md-3 col-lg-3">
+    <div class="form-outline ">
+      <input type="number" id="form10Example2" name="offer"  class="form-control bg-light" />
+      <label class="form-label" for="form10Example2">Offer%</label>
+    </div>
+  </div>
+  
+     
+  <div class="col-sm">
+    <div class="form-outline" hidden>
+      <input type="text" id="form10Example3" value="product-type" name="offer-Type" hidden class="form-control bg-light" />
+      <label class="form-label text-dark" for="form10Example3"></label>
+    </div>
+   
+  </div>
+   <button class="btn btn-primary col-lg-2" onclick="addproductoffer()" >Add new Product offer</button>
+   <button class="btn-success" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">View All Offers-Click here</button>
+</div>
+</form>
+</div>
+<hr>
+<hr>
+<div class="container  col-12 col-lg-7" >
+ <h1 class="bg-gradient mt-4 text-white ">Product Details</h1>
+    <table class="table table-striped table-responsive table-dark">
+      <thead>
+        <tr>
+          <th  scope="col-4">NO:</th>
+          <th scope="col-4">Product Name</th>
+          <th scope="col-4">Price</th>
+          <th scope="col-4">offerprice</th>
+      
+     <th scope="col-4">Update offer</th>
+     <th scope="col-4"> Offer Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each products}}
+          <tr>
+            <th scope="row"><span
+                class="create_index2"
+              ></span></th>
+            <td>{{this.Name}}</td>
+            
+              <td>{{this.price}}</td>
+            <td>{{this.offerprice}}</td>
+               <td><select class="btn btn-success" onchange="changealert('{{this._id}}')" name="selectedoffer" id="{{this._id}}"  >
+                <option value="">choose Offer</option>
+                {{#each ../productoffers}}
+                <option value="">{{this.Offername}}</option>
+
+                {{/each}}
+               </select></td>
+          <td>{{this.currentoffer}}</td>
+</tr>
+{{/each}}
+
+      </tbody>
+    </table>
+
+</div>
+
+{{!-- 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> --}}
+
+
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      
+<div class="">
+  <table class="table table-striped table-responsive table-dark col-12">
+      <thead>
+        <tr>
+          <th  scope="col-4">NO:</th>
+          <th  scope="col-4">Offer Name</th>
+          <th scope="col-4">Offer %</th>
+          <th scope="col-12">Options</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+      {{#each productoffers}}
+          <tr>
+            <th scope="row"><span
+                class="create_index1"
+              ></span></th>
+  
+            
+              <td>{{this.Offername}}</td>
+            <td>{{this.offer}}</td>
+            <td ><button class="btn btn-danger" onclick="deletefromproductoffer('{{this._id}}')">Delete</button></td>
+               
+        
+</tr>
+{{/each}}
+
+      </tbody>
+    </table>
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+    function addcategoryoffer(){
+      
+  $("#caton").submit((e) => {
+    e.preventDefault()
+    console.log("ivide aayi")
+
+    $.ajax({
+
+      url: '/admin/addnewcategoryoffer',
+      method: 'post',
+      data: $('#caton').serialize(),
+      success: (response) => {
+      
+        location.reload()
+
+      }
+    })
+
+  })
+
+    }
+
+</script>
+
+<script>
+    function addproductoffer(){
+      
+  $("#caton2").submit((e) => {
+    e.preventDefault()
+    console.log("ivide aayi")
+
+    $.ajax({
+
+      url: '/admin/addnewproductoffer',
+      method: 'post',
+      data: $('#caton2').serialize(),
+      success: (response) => {
+       console.log(response)
+       if(response.offeradded==true){
+        swal("Product offer Added ");
+        location.reload() 
+       }else{
+        swal("Offer Name Already Exist...!");
+        
+       }
+        
+
+      }
+    })
+
+  })
+
+    }
+
+
+    
+function changeoffer(proid,status){
+  let st=document.getElementById(proid);
+  let stat=st.options[st.selectedIndex].text
+  $.ajax({
+   url:"/admin/changeoffer",
+   data:{
+    proid:proid,
+    status:stat
+   },
+   method:"post",
+   success:(response)=>{
+   
+    location.reload()
+    document.getElementById(proid).value=stat
+   }
+
+
+
+  })
+}
+
+
+function deletefromproductoffer(offerid){
+   
+   $.ajax({
+    url:"/admin/deletefromproductoffers",
+    data:{
+      offerid:offerid
+    },
+    method:"post",
+    success:(response)=>{
+      
+      location.reload()
+    }
+   })
+
+
+
+}
+
+
+</script>
+
+<script>
+      var divs = document.querySelectorAll('.create_index1'); for (var i = 0; i <
+      divs.length; ++i) { divs[i].innerHTML = i + 1; }
+    </script>
+
+
+<script>
+      var divs = document.querySelectorAll('.create_index'); for (var i = 0; i <
+      divs.length; ++i) { divs[i].innerHTML = i + 1; }
+    </script>
+
+<script>
+      var divs = document.querySelectorAll('.create_index2'); for (var i = 0; i <
+      divs.length; ++i) { divs[i].innerHTML = i + 1; }
+    </script>
+
+
+<script>
+function changealert(proid,status){
+  swal({
+  title: "Are you sure?",
+  text: "Once Applied, Category Offer will be Replaced",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    changeoffer(proid,status)
+    swal("New offer is Applied ", {
+      icon: "success",
+    });
+  } else {
+    swal("No new offer Applied");
+  }
+});
+}
+
+</script>

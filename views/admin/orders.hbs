@@ -1,0 +1,140 @@
+<style>
+
+  body{ background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71)
+  43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
+  'Arima Madurai', cursive; }
+
+</style>
+  <div
+    class="container mt-5 col-lg-11  col-md-6 co-sm-4"
+    style="font-size:15px ;"
+  >
+
+    <h1 class="bg-gradient text-white">Orders</h1>
+
+    <table class="table table-striped table-responsive table-dark">
+      <thead>
+        <tr>
+          <th scope="col">index</th>
+          <th class="d-none d-mhd-table-cell" scope="col">Order ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+         
+          <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">orderID</th>
+                 <th scope="col">Update Status</th>
+                   <th scope="col">Order info</th>
+                    <th scope="col">Order info</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+        {{#if this.iscancel}}
+         <tr>
+            <th class="d-none d-md-table-cell" scope="row"><span
+                class="create_index"
+              ></span></th>
+            <td>{{this.deliverydetails.firstname}}</td>
+            <td>{{this.deliverydetails.city}}</td>
+            
+            <td class="text-danger">Cancelled on {{this.cancelleddate}}</td>
+            <td>{{this.formatted}}</td>
+             <td>{{this._id}}</td>
+             <td class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i></td>
+             <td><button class="btn disabled btn-success" >View Products</button></td>
+             
+            
+          
+             <td><button class="btn disabled text-danger bg-gradient border" style="font-weight:900 ;" >Cancelled<i class="fa-solid fa-triangle-exclamation"></i></button></td>
+            
+       
+             
+          </tr>
+        {{else}}
+        
+            {{#if productreturn}}
+             <tr>
+            <th class="d-none d-md-table-cell" scope="row"><span
+                class="create_index"
+              ></span></th>
+            <td>{{this.deliverydetails.firstname}}</td>
+            <td>{{this.deliverydetails.city}}</td>
+           
+            <td>{{this.status}}</td>
+            <td>{{this.formatted}}</td>
+             <td>{{this._id}}</td>
+             <td><select  class="btn font-weight-bold text-danger" name="status" id="{{this._id}}">
+              <option value="">Refund Intiated</option>
+           
+                  
+             </select></td>
+             <td><button class="btn btn-success" >View Products</button></td>
+            <td><button class="btn  text-danger font-weight-bold" >Order Returned<i class="fa-solid fa-triangle-exclamation"></i></button></td>
+          </tr>
+            {{else}}
+          <tr>
+            <th class="d-none d-md-table-cell" scope="row"><span
+                class="create_index"
+              ></span></th>
+            <td>{{this.deliverydetails.firstname}}</td>
+            <td>{{this.deliverydetails.firstname}},{{this.deliverydetails.lastname}},{{this.deliverydetails.address}},{{this.deliverydetails.city}}</td>
+           
+            <td>{{this.status}}</td>
+            <td>{{this.formatted}}</td>
+             <td>{{this._id}}</td>
+             <td><select onchange="changestatus('{{this._id}}')" class="btn btn-success" name="status" id="{{this._id}}">
+              <option value="">{{this.status}}</option>
+              <option value="">Placed</option>
+              <option value="">Packed</option>
+              <option value="">Shipped</option>
+              <option class="text-capitalize" value="">Deliverd</option>
+              <option class="text-capitalize" value="">Returned</option>
+                  
+             </select></td>
+             <td><button class="btn btn-success" >View Products</button></td>
+             {{#if isdeliverd}}
+             <td><button class="btn btn-success bg-danger" >SUCCESSFULLY DELIVERED</button></td>
+            {{else}}
+            <td><button class="btn btn-success bg-danger" >CANCEL ORDER</button></td>
+             {{/if}}
+          </tr>
+          {{/if}}
+          {{/if}}
+        {{/each}}
+      
+
+      </tbody>
+    </table>
+
+    <script>
+      var divs = document.querySelectorAll('.create_index'); for (var i = 0; i <
+      divs.length; ++i) { divs[i].innerHTML = i + 1; }
+    </script>
+
+  </div>
+
+</div>
+
+
+<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<li class="page-item">
+				<a class="page-link text-white" href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			{{#for 1 pages 1}}
+			 <li class="page-item "><a class="page-link {{#ifCond this ../currentPage}} active {{/ifCond}}" href="/admin/orders?page={{this}}">{{this}}</a></li>
+			{{/for}}
+
+			<li class="page-item ">
+				<a class="page-link text-white" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+ 

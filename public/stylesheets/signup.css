@@ -1,0 +1,48 @@
+body {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(162,194,170,1) 43%, rgba(37,149,65,1) 100%);
+    background-attachment: fixed; 
+    font-family: 'Arima Madurai', cursive;
+  }
+   
+    .outer{
+        
+        width:500px ;
+        height: fit-content;
+    }
+
+    .br{
+        border-radius: 20px;
+        height: 45px;
+    }
+    .googleicon{
+        height: 35px;
+        width: 89px;
+        
+    }
+
+    .submit{
+        background-color: RGB(15, 30, 6);
+        color: aliceblue;
+    }
+    submit:hover{
+        background-color: RGB(58, 129, 58) ;
+        opacity:50% ;
+    }
+  
+    input::-webkit-input-placeholder {
+        margin-left: 10px;
+        font-size: 20px;
+        line-height: 3;
+    }
+    .create{
+        text-decoration: none;
+     color:RGB(44, 122, 48) ;
+     font-weight: 500;
+    }
+    .braddress{
+        border-radius: 20px;
+        height: 45px;
+        height:120px ;
+
+    }
+    

@@ -1,0 +1,324 @@
+   <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+<style>
+    .gradient-custom {
+/* fallback for old browsers */
+background: #cd9cf2;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
+}
+</style>
+
+
+<section class="h-100 gradient-custom" >
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{details.deliverydetails.firstname}}</span>!</h5>
+          
+          </div>
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+        
+            </div>
+          
+            <div class="card shadow-0 border mb-4">
+              {{#each products}}
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="/product_images/{{this.products.image1}}"
+                      class="img-fluid" alt="Phone">
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 font-weight-bold">Name: {{this.products.Name}}</p>
+                  </div>
+               
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small font-weight-bold">Category:{{this.products.catogory}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small font-weight-bold">Qty: {{this.quantity}} </p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small font-weight-bold">Price:{{this.products.price}}</p>
+                  </div>
+                </div>
+                <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                <div class="row d-flex align-items-center">
+                  <div class="col-md-2">
+                    <p class="text-muted mb-0 small ">Track Order</p>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="progress" style="height: 6px; border-radius: 16px;">
+                    {{#if details.isdeliverd}}
+                      <div class="progress-bar" role="progressbar"
+                        style="width: 100%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="65"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    {{else}}
+                     <div class="progress-bar" role="progressbar"
+                        style="width: 15%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="65"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    {{/if}}
+                    <div class="d-flex justify-content-around mb-1">placed
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5">shipped</p>
+
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+            
+
+            <div class="d-flex justify-content-between pt-2">
+              <p class="fw-bold mb-0">Order Details</p>
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span>{{details.price}}*₹</p>
+            </div>
+
+            <div class="d-flex justify-content-between pt-2">
+             
+              
+            </div>
+
+            <div class="d-flex justify-content-between">
+              
+              <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> free</p>
+            </div>
+
+            <div class="d-flex justify-content-between mb-5">
+         
+              <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+                <p class="text-muted mb-0"><span class="fw-bold me-4">Payment Method</span> {{details.paymentmethod}}</p>
+            </div>
+          </div>
+
+          <div class="card-footer border-0 px-4 py-5"
+            style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            
+            <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total Discounted
+              Amount: <span class="h2 mb-0 ms-2">{{details.price}}₹</span></h5>
+          </div>
+          <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".bd-example-modal-lg" style="font-size:16px ; border-radius: 10px;">View and Download Invoice <i class="fa-solid fa-download"></i></button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+<button class="btn btn-info col-3 mb-4" onclick="generatePDF()">Generate Invoice</button>
+<div id="invoice">
+
+   
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+          <img src="/images/Group 40.png" alt="">
+    			<h2  class="mt-2">Invoice</h2><h3 class="pull-right">Order No: {{details._id}}</h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Billed To:</strong><br>
+    					{{details.deliverydetails.firstname}}<br>
+    					{{details.deliverydetails.lastname}}<br>
+    					{{details.deliverydetails.address}}<br>
+    					{{details.deliverydetails.city}} <br>
+              {{details.deliverydetails.state}} <br>
+                zipcode: {{details.deliverydetails.zip}} <br>
+             mobile: {{details.deliverydetails.mobile}} <br>
+           
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+        			<strong>Shipped To:</strong><br>
+    				{{details.deliverydetails.firstname}}<br>
+    					{{details.deliverydetails.lastname}}<br>
+    					{{details.deliverydetails.address}}<br>
+    					{{details.deliverydetails.city}} <br>
+              {{details.deliverydetails.state}} <br>
+                zipcode: {{details.deliverydetails.zip}} <br>
+             mobile: {{details.deliverydetails.mobile}} <br>
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Payment Method:</strong><br>
+    					{{details.paymentmethod}}<br>
+    					{{details.status}}
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Order Date:</strong><br>
+    					{{details.formatted}}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Purchase Summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Plant Name</strong></td>
+        							<td class="text-center"><strong>Amount</strong></td>
+        							<td class="text-center"><strong>Quantity</strong></td>
+        							<td class="text-right"><strong>Total</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<!-- foreach ($order->lineItems as $line) or some such thing here -->
+    							{{#each products}}
+                  <tr>
+                    
+    								<td> {{this.products.Name}}</td>
+    								<td class="text-center"> {{this.products.price}}</td>
+    								<td class="text-center"> {{this.quantity}} </td>
+    								<td class="text-right">{{this.products.price}}*{{this.quantity}}</td>
+    							</tr>
+               {{/each}}
+    							<tr>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+    								<td class="thick-line text-right">{{details.price}}₹</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Shipping</strong></td>
+    								<td class="no-line text-right">0.00₹</td>
+    							</tr>
+                  
+                  <tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Clearing</strong></td>
+    								<td class="no-line text-right">0.00₹</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total Invoice Amount</strong></td>
+    								<td class="no-line text-right font-weight-bold" style="font-size:20px ;">{{details.price}}₹</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</div>
+  
+ 
+  <script>
+    function generatePDF() {
+        const element = document.getElementById('invoice');
+        html2pdf()
+            .from(element)
+            .save();
+
+    }
+</script>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="section bg-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">ABOUT US</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Our Story</a></li>
+							<li><a href="">Contactc Us</a></li>
+							<li><a href="">Locate Stores</a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">offer and Rewards</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Offers </a></li>
+							<li><a href="">Coupens</a></li>
+							<li><a href="">Rewards </a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Help</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Sign Up </a></li>
+							<li><a href="">Login</a></li>
+							<li><a href="">Terms of Services</a></li>
+							<li><a href="">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Contact Us</h6>
+						<p class="contact-info mt-4">Contact us if need help withanything</p>
+						<p class="contact-info">+9190489544884</p>
+						<div class="mt-5">
+							<ul class="list-inline ">
+
+								<li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-whatsapp"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-instagram"></i></i></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center mt-5">
+			<p class="footer-alt mb-0 f-14">2019 © Plantography, All Rights Reserved</p>
+		</div>
+	</footer>
+
+  

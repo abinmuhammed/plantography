@@ -1,0 +1,70 @@
+<style>
+	.tv{
+
+	}
+	
+
+</style>
+	<header>
+
+<div class="container-row  " style="background-color:RGB(39, 83, 29) ; height: 25px; color: aliceblue;">
+
+	<p class="text-start ms-4"> Diwali sale is live</p>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light   " style=" font-family: 'Arima Madurai', cursive;" >
+	<a class="navbar-brand " href="#"> <img src="/images/Group 40.png" class="img-fluid" alt="Responsive image"></a>
+	<button class="navbar-toggler btn-dark bg-gradient mt-2 	col-sm-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" title="more options" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon mt-1" style="color:RGB(62, 128, 32); font-weight: 700;"><i class="fa-solid fa-angles-down"></i></span>
+	</button>
+  
+	<div class="collapse navbar-collapse divone bg-dark py-3 bg-gradient  " id="navbarSupportedContent">
+	  <ul class="navbar-nav mr-auto ml-4">
+		<li class="nav-item active">
+
+		  <a class="nav-link ml-lg-1 ml-md-1 text-white {{#if dashboardActive}} bg-gradient{{/if}}  font-weight-bold" href="/admin/adminhome">Dash board <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item  font-weight-bold">
+		  <a class="nav-link ml-lg-1 {{#if userActive}} bg-gradient{{/if}}  text-white" href="/admin/userdetails">User details</a>
+		</li>
+		<li class="nav-item ml-lg-1  font-weight-bold ">
+			<a class="nav-link text-white {{#if productActive}} bg-gradient{{/if}}" href="/admin/productdetails">Product details  </a>
+		  </li>
+		  	<li class="nav-item ml-1 ml-lg-1 {{#if orderActive}} bg-gradient{{/if}} ml-md-1 font-weight-bold ">
+			<a class="nav-link text-white" href="/admin/orders">Orders   </a>
+		  </li>
+		  	<li class="nav-item ml-1 ml-lg-1 ml-md-1 font-weight-bold ">
+			<a class="nav-link text-white {{#if bannerActive}} bg-gradient{{/if}} " href="/admin/banner">Banner </a>
+		  </li>
+		  	<li class="nav-item ml-1 ml-lg-1 font-weight-bold ">
+			<a class="nav-link text-white {{#if coupenActive}} bg-gradient{{/if}}" href="/admin/coupenmanagement">Coupen   </a>
+		  </li>
+		  	<li class="nav-item ml-1 ml-lg-1 ml-md-1 font-weight-bold ">
+			<a class="nav-link text-white {{#if categoryActive}} bg-gradient{{/if}} " href="/admin/addcategory">Category Management </a>
+		  </li>
+		   </li>
+		  	<li class="nav-item ml-1 ml-lg-1 ml-md-1 font-weight-bold ">
+			<a class="nav-link text-white tv {{#if offerActive}} bg-gradient{{/if}}"  href="/admin/offermanagement">Offer Management </a>
+		  </li>
+	
+		<div class="row float-right">
+	<li class="nav-item font-weight-bold  align d-flex justify-content-end ml-lg-0 ">
+	       <form action="/admin/logoutadmin" method="post">
+      
+        <button type="submit" class=" btn btn-dark bg-gradient col-12 ">Log Out</button>
+        
+        </form> 
+			
+		  </li>
+		
+		
+		</div>
+			
+	
+	
+	  </ul>
+	
+	</div>
+  </nav>
+
+	</header>

@@ -1,0 +1,287 @@
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+
+  <link rel = "icon" href ="/images/DB of Games Logo.png" 
+        type = "image/x-icon">
+
+  <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+    
+
+
+    
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #682773
+    }
+
+    .profile-button:focus {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+
+    .add-experience:hover {
+        background: #BA68C8;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
+    }
+       
+    
+    
+</style>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <form action="" id="refferal">
+   <div class="bg-gradient text-center p-3" style=  " color:aliceblue ; font-family: 'Arima Madurai', cursive; background-color:RGB(39, 83, 29) ;">
+    <h2> Enter Refferal Code </h2>
+    <input type="text" name="referralcode" style="border-radius:20px;">
+    <button class="btn-dark" type="submit" >Submit</button>
+    </form>
+</div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  $("#refferal").submit((e) => {
+    e.preventDefault()
+    console.log("ivide aayi")
+
+    $.ajax({
+
+      url:('/refferal-creation') ,
+      method: 'post',
+      data: $('#refferal').serialize(),
+      success: (response) => {
+       alert(response)
+location.reload()
+       
+        
+
+      }
+    })
+
+  })
+
+  function already(response){
+swal(response);
+ }
+</script>
+
+
+
+
+
+
+
+
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                    width="150px"
+                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                    class="font-weight-bold">{{userdetails.Firstname}}</span><span
+                    class="text-black-50">{{userdetails.Email}}</span><span> </span>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"  > USE REFFERAL</button>
+                        <p>
+  <button
+    class="btn btn-primary mt-3"
+    type="button"
+    data-mdb-toggle="collapse"
+    data-mdb-target="#collapseWidthExample"
+    aria-expanded="false"
+    aria-controls="collapseWidthExample"
+  >
+    WALLLET HISTORY
+  </button>
+</p>
+<div style="min-height: 120px;">
+  <div class="collapse collapse-vertical" id="collapseWidthExample" >
+    <div style="width: 300px; background-color:RGB(99, 39, 120); border-radius:10px ;" class=" bg-gradient text-white p-2">
+     <div style="font-weight:700 ; border-radius:20px ; font-family: cursive;">
+       
+     Wallet Balance:&nbsp;&nbsp;₹
+{{wallet.Amount}} <br>
+   <div class="text-dark text-justify  bg-gradient p-2" style="border-radius:10px ; background-color: RGB(59, 113, 202); " >
+ Last Transaction History <i class="fa-solid fa-hand-holding-dollar " style="font-size:30px ;"></i> <br> Amount credited:{{wallet.credit}} <br>
+     Transaction Date:{{wallet.Date}} <br>
+     Description:{{wallet.Description}}
+   </div>
+    
+     </div>
+
+    </div>
+  </div>
+</div>
+
+                        </div>
+
+                 
+                
+
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <form action="/profileupdated" method="POST">
+                        <div class="col-md-6"><label  class="labels ">Name</label><input type="text"
+                                name="Firstname" class="form-control font-weight-bold hlo" readonly required placeholder=""
+                                value="{{userdetails.Firstname}}"></div>
+                        <div class="col-md-6"><label class="labels">Surname</label><input type="text" 
+                                name="Lastname" class="form-control font-weight-bold hlo" readonly required id="hlo" value="{{userdetails.Lastname}}"
+                                placeholder=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Email</label><input readonly required type="text" name=""
+                            class="form-control font-weight-bold"  placeholder="" value="{{userdetails.Email}}">
+                    </div>
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input readonly required type="text"
+                            name="Mobile"  class="form-control font-weight-bold hlo" placeholder=""
+                            value="{{userdetails.Mobile}}"></div>
+                    <div class="col-md-12"><label class="labels">ZIP code</label><input type="number" readonly required
+                            class="form-control font-weight-bold hlo" name="Zip" placeholder="" value="{{userdetails.zip}}">
+                    </div>
+                    <div class="col-md-12"><label class="labels">Full Address </label><input type="text" readonly required
+                            class="form-control font-weight-bold py-5 hlo" name="fulladdress"
+                            placeholder="House Name,street name,zip,District,State" value="{{userdetails.Address}}">
+                    </div>
+                
+
+
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text"
+                            class="form-control font-weight-bold hlo" required readonly placeholder="" name="country"
+                            value="{{userdetails.country}}"></div>
+                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text"
+                            class="form-control font-weight-bold hlo" required readonly value="{{userdetails.State}}" name="State"
+                            placeholder=""></div>
+                </div>
+                
+                <div class="mt-5 text-center">
+                     <button class="btn btn-primary profile-button mr-2" type="button" onclick="startedit()" >EDIT</button><button class="btn btn-primary profile-button " type="submit">Save
+                        Changes</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <p style="color:chartreuse ;" >{{changesuccess }}</p>
+                <div class="d-flex justify-content-between align-items-center experience"><span>Change Password</span>
+                </div><br>
+
+                <form action="" id="changepass">
+ <div class="col-md-12"><label class="labels">Confirm Your Old Password</label><input type="password" name="oldpass"
+                        class="form-control" placeholder="Password" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">New Password</label><input type="password" name="newpass" class="form-control"
+                        placeholder="New password" value=""></div>
+                <div class="mt-5 text-center">
+                    <button class="btn btn-primary profile-button"   type="submit" id="submitbutton">Confirm New
+                        Password</button>
+
+
+                        </div>
+                                            
+
+
+            </div>
+                </form>
+               
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/#[[latestVersion]]#/mdb.min.js"
+></script>
+
+
+<script >
+
+$("#changepass").submit((e)=>{
+  e.preventDefault()
+  console.log("ivide aayi")
+  
+   $.ajax({
+  
+  url:'/changepassword',
+  method:'post',
+  data:$('#changepass').serialize(),
+  success:(response)=>{
+    
+    location.reload()
+  
+  }
+})
+
+})
+
+
+
+
+
+    function startedit() {
+ collection=document.getElementsByClassName('hlo')
+      collection[0].readOnly=false
+      collection[1].readOnly=false
+      collection[2].readOnly=false
+      collection[3].readOnly=false
+      collection[4].readOnly=false
+      collection[5].readOnly=false
+      collection[6].readOnly=false
+      
+
+    
+    } 
+
+ 
+
+
+
+
+
+
+
+</script>

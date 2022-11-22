@@ -1,0 +1,246 @@
+{{#if products}}
+
+
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3 bg-gradient " style="background-color:RGB(39, 83, 29) ;">
+            <h5 class="mb-0">Cart - items</h5>
+          </div>
+          <div class="card-body bg-gradient " style="background-color:RGB(121, 179, 135);">
+            <!-- Single item -->
+            {{#each products}}
+            <div class="bg-dark bg-gradient mt-3" >
+
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="/product_images/{{this.products.image1}}"
+                    class="w-100" alt="Blue Jeans Jacket" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0 text-white mt-5">
+                <!-- Data -->
+                <p><strong>{{this.products.Name}}</strong></p>
+                <p>{{this.products.catogory}}</p>
+                
+                <button type="button" onclick="deleteproduct('{{this._id}}','{{this.products._id}}')" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                  title="Remove item">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                  title="Move to the wish list">
+                  <i class="fas fa-heart"></i>
+                </button>
+                <!-- Data -->
+                <p class="text-start  text-white  ">
+                  <strong>₹{{products.offerprice}}</strong>
+                </p>
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0 mt-5">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+
+              <button onclick="changeQuantity('{{this._id}}','{{this.products._id}}','{{../user._id}}',-1)" class="btn btn-warning bg-gradient Cart-item-count ">-</button>
+               <span id="{{this.products._id}}" class="bg-white px-2 pt-2" style="font-weight:700 ;">{{this.quantity}}</span>
+                <button class="btn btn-warning Cart-item-count " onclick="changeQuantity('{{this._id}}','{{this.products._id}}','{{../user._id}}',1)">+</button>
+     
+                </div>
+                <!-- Quantity -->
+
+                <!-- Price -->
+                
+                <!-- Price -->
+              </div>
+            </div>
+            <!-- Single item -->
+            </div> 
+            {{/each}}
+
+            <hr class="my-4" />
+
+            <!-- Single item -->
+       
+            <!-- Single item -->
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body bg-gradient" style="background-color:RGB(39, 83, 29) ;">
+            <p><strong>Expected shipping delivery</strong></p>
+            <p class="mb-0">12.10.2020 - 14.10.2020</p>
+          </div>
+        </div>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body">
+            <p><strong>We accept</strong></p>
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+              alt="Visa" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+              alt="American Express" />
+            <img class="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+              alt="Mastercard" />
+               <img class="me-2" width="65px"
+              src="data:image/png;base64,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"
+              alt="COD" />
+           
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3 bg-gradient " style="background-color:RGB(39, 83, 29) ;" >
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                Products
+                <span>₹{{total}}</span>
+              </li>
+                
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Shipping
+                <span>₹0.00</span>
+              </li>
+
+              <li
+                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>Total amount</strong>
+                  <strong>
+                    <p class="mb-0">(including VAT)</p>
+                  </strong>
+                </div>
+                <span><strong><span>₹</span><span id="total" > {{total}}.00 </span></strong></span>
+              </li>
+            </ul>
+<a href="/orderpage">
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="background-color:RGB(39, 83, 29) ;">
+              Go to checkout
+            </button>
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+
+
+</script>
+
+
+
+{{else}}
+<style>
+  
+.glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+</style>
+
+<div style="background-color: RGB(39, 83, 29); border-radius:  10px; font-size:14px ; font-family: cursive " class="container py-3 bg-gradient ">WELCOME TO CART <i class="fa-solid fa-cart-arrow-down"></i></div>
+<div class="container-fluid d-flex justify-content-center bg-white " style="box-shadow:2px 2px ;">
+  <img style="width: 40%; " src="https://www.kindpng.com/picc/m/174-1749396_empty-cart-your-cart-is-empty-hd-png.png" alt="" srcset="">
+<button type="button" class=" btn btn-dark bg-gradient col-lg-5"> <a class="glow" style="text-decoration:none ;  font-family:cursive; font-size: xx-large; color:brown ;" href="/">CONTINUE SHOPPING>>></a> </button>
+
+
+
+
+</div>
+
+
+	<footer class="section bg-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">ABOUT US</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Our Story</a></li>
+							<li><a href="">Contactc Us</a></li>
+							<li><a href="">Locate Stores</a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">offer and Rewards</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Offers </a></li>
+							<li><a href="">Coupens</a></li>
+							<li><a href="">Rewards </a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Help</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Sign Up </a></li>
+							<li><a href="">Login</a></li>
+							<li><a href="">Terms of Services</a></li>
+							<li><a href="">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Contact Us</h6>
+						<p class="contact-info mt-4">Contact us if need help withanything</p>
+						<p class="contact-info">+9190489544884</p>
+						<div class="mt-5">
+							<ul class="list-inline ">
+
+								<li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-whatsapp"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-instagram"></i></i></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center mt-5">
+			<p class="footer-alt mb-0 f-14">2019 © Plantography, All Rights Reserved</p>
+		</div>
+	</footer>
+
+
+
+
+ 
+{{/if}}

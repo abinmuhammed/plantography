@@ -1,0 +1,133 @@
+<style>
+
+  body{ background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71)
+  43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
+  'Arima Madurai', cursive; }
+
+</style>
+<div class="row col-12">
+
+  <div
+    class="col-lg-2 col-12 col-sm-3 ml-3 m-sm-0 m-xl-3 col-md-4 container-fluid bg-gradient m-1"
+    style="border-radius:15px ; "
+  >
+
+    <span
+      class="dot mt-3"
+      style=" background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXAS-s6-wcK3enD1Z6kuBGONuyTKR6M5a3KeAI9w_ACQ&s) ; background-position:-35px -24px ;  height: 60px;
+          width: 60px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;"
+    ></span>
+    <div
+      class="bg-danger bg-gradient col-9 py-1 mt-5 text-center"
+      style="border-radius:167px ; "
+    >
+      <h6><i class="fa-solid fa-user-gear"></i> Supertramp </h6>
+    </div>
+
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5"
+      style="border-radius:14px ; "
+    >
+      <h6>Profile</h6>
+    </div>
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5"
+      style="border-radius:14px  ;"
+    >
+      <h6>PRO management</h6>
+    </div>
+    <div
+      class="bg-danger bg-gradient col-12 py-2 mt-5 mb-3"
+      style="border-radius:14px  ;"
+    >
+      <h6>Help desk</h6>
+    </div>
+
+  </div>
+
+  <div
+    class="container mt-5 col-lg-8 col-md-6 co-sm-4"
+    style="font-size:15px ;"
+  >
+
+    <h1 class="bg-gradient text-light">Banner Table</h1>
+
+    <table class="table table-striped table-responsive table-dark">
+      <thead>
+        <tr>
+          <th class="d-none d-md-table-cell" scope="col">Banner ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          
+          <th class="d-none d-md-table-cell" scope="col">Image</th>
+          <th scope="col">Status</th>
+          <th scope="col">Options</th>
+           
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allbanners}}
+          <tr>
+            <th class="d-none d-md-table-cell" scope="row"><span
+                class="create_index"
+              ></span></th>
+            <td>{{this.Name}}</td>
+            <td>{{this.description}}</td>
+            
+            <td class="d-md-table-cell"><img
+                src="/banner_image/{{this._id}}.jpg"
+                style="width:70px;"
+                alt=""
+              /></td>
+            {{#if  this.isactivate}}
+              <td>
+                <a
+                  href="/admin/deactivatebanner/{{this._id}}"
+                  class="btn btn-primary"
+                > DeActivate</a>
+              </td>
+            {{else}}
+              <td> <a href="/admin/activatebanner/{{this._id}}" class="btn btn-warning"> activate</a> </td>
+            {{/if}}
+             <td><button class="btn btn-danger" onclick="deletebanner('{{this._id}}')">Delete</button></td>
+          </tr>
+        {{/each}}
+        <tr class="col-12">
+          <th scope="row">
+            <a class="btn btn-danger bg-gradient" href="/admin/addbanner">Add
+              Banner</a>
+          </th>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+    <script>
+      var divs = document.querySelectorAll('.create_index'); for (var i = 0; i <
+      divs.length; ++i) { divs[i].innerHTML = i + 1; }
+    </script>
+
+  </div>
+
+</div>
+
+
+<script>
+  function deletebanner(bannerid){
+    $.ajax({
+      url:'/admin/deletebanner',
+      data:{
+        bannerid:bannerid
+      },
+      method:'post',
+      success:(Response)=>{
+        alert(Response)
+        location.reload()
+      }
+    })
+  }
+</script>

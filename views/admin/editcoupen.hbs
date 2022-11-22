@@ -1,0 +1,49 @@
+
+<style>
+
+  body{ background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71)
+  43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
+  'Arima Madurai', cursive; }
+
+</style>
+  <div
+    class="container mt-5 col-lg-8 col-md-6 co-sm-4"
+    style="font-size:15px ;"
+  >
+
+<div class="col-lg-8 text-white " >
+  <h4 class="m-lg-6 mt-3 " style=" font-family: 'Arima Madurai', cursive; font-weight: 700;" >Edit Coupen Details</h4>
+  <form action="/admin/savechangescoupen" method="POST">
+  <div class="form-group">
+    <label>Coupen</label>
+    <input type="text" required class="form-control" name="coupen" value="{{coupen.coupen}}"  placeholder="Enter new coupen">
+   <input type="text" value="{{coupen._id}}" hidden name="id">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" required class="form-control py-5" name="description" value="{{coupen.description}}" placeholder="Description">
+   
+  </div>  <div class="form-group">
+    <label>Offer Percentage</label>
+    <input type="number" value="{{coupen.offer}}" required class="form-control" name="offer"  placeholder="Min: offer Percentage">
+   
+  </div>
+   <div class="form-group">
+    <label>Min Purchase Amount</label>
+    <input type="number" required class="form-control" name="Min_Amount" value="{{coupen.Min_Amount}}" placeholder="Min: purchase ">
+   
+  </div>
+  <button type="submit" class="btn btn-primary" >Save changes</button>
+
+
+</form>
+ 
+
+
+
+
+
+
+</div>
+</div>
+ 

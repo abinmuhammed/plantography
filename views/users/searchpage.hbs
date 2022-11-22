@@ -1,0 +1,125 @@
+<link rel="stylesheet" href="/stylesheets/category.css">
+<body>
+<div >
+        
+  <nav aria-label="breadcrumb  py-5  ">
+    <ol class="breadcrumb bg-gradient py-4 mt-3 container " style="background-color:RGB(39, 83, 29);">
+      <li class="breadcrumb-item " style="font-size:25px ;font-family: 'Arima Madurai', cursive;" ><a class="text-white ml-2" href="#">Showing Result for</a></li>
+      <li class="breadcrumb-item " style="text-decoration:none;font-family: 'Arima Madurai', cursive; font-size:25px ;"><a class="text-white" href="#"> {{b}}</a></li>
+
+    </ol>
+  </nav>
+
+
+
+</div>
+
+
+   <div class="container mt-5 " style="border:1px solid ;">
+    <div class=" container  row">
+        {{#each data}}
+        <div class="col-md-3 col-sm-6 " style="border:2px solid ;" >
+            <div class="product-grid bg-gradient" style="background-color: ;">
+                <div class="product-image" >
+                    <a href="/productdetails/{{this._id}}" class="image" >
+                        <img class="pic-1  bg-opacity-25 "  src="/product_images/{{this._id}}.jpg">
+                        <img class="pic-2  "  src="/product_images/{{this._id}}.jpg">
+                    </a>
+                    <ul class="product-links " >
+                        <li class="" ><a onclick="swalo('{{this._id}}')" href=""><i class="fa fa-shopping-cart"></i></a></li>
+                        <li><a onclick="ADDTOWISHLIST('{{this._id}}')" href="#"><i class="far fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-random"></i></a></li>
+                        <li><a href="#"><i class="fa fa-search"></i></a></li>
+                    </ul>
+                </div>
+                <div class="product-content">
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="far fa-star"></li>
+                    </ul>
+                    <h3 class="title" style="font-family: 'Arima Madurai', cursive;"><a href="#">{{this.Name}}</a></h3>
+                    <div class="price" style="font-family: 'Arima Madurai', cursive;"><del>₹{{this.price}}</del>&nbsp;₹{{this.offerprice}}</div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+      
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+<div >
+        <footer class="section bg-footer mt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">ABOUT US</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Our Story</a></li>
+							<li><a href="">Contactc Us</a></li>
+							<li><a href="">Locate Stores</a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">offer and Rewards</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Offers </a></li>
+							<li><a href="">Coupens</a></li>
+							<li><a href="">Rewards </a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Help</h6>
+						<ul class="list-unstyled footer-link mt-4">
+							<li><a href="">Sign Up </a></li>
+							<li><a href="">Login</a></li>
+							<li><a href="">Terms of Services</a></li>
+							<li><a href="">Privacy Policy</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="">
+						<h6 class="footer-heading text-uppercase text-white">Contact Us</h6>
+						<p class="contact-info mt-4">Contact us if need help withanything</p>
+						<p class="contact-info">+9190489544884</p>
+						<div class="mt-5">
+							<ul class="list-inline ">
+
+								<li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-whatsapp"></i></a></li>
+								<li class="list-inline-item"><a href="#"><i
+											class="fa-brands fa-square-instagram"></i></i></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-center mt-5">
+			<p class="footer-alt mb-0 f-14">2019 © Plantography, All Rights Reserved</p>
+		</div>
+	</footer>
+    </div>
+ 
+ 
+	
+</body>
+

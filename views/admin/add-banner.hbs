@@ -1,0 +1,91 @@
+<style>
+
+    body{
+    
+    background: linear-gradient(135deg, rgb(0, 0, 0) 0%, rgb(79, 71, 71) 43%, rgb(170, 198, 178) 100%);
+    background-attachment: fixed; 
+    font-family: 'Arima Madurai', cursive;
+  
+   
+}
+
+
+</style>
+    <div class="row col-12 "  >
+
+
+        <div class="col-lg-2 col-12 col-sm-3 ml-3 m-sm-0 m-xl-3  col-md-4   container-fluid bg-gradient m-1" style="border-radius:15px ; ">
+
+          <span class="dot mt-3 " style=" background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXAS-s6-wcK3enD1Z6kuBGONuyTKR6M5a3KeAI9w_ACQ&s) ; background-position:-35px -24px ;  height: 60px;
+          width: 60px;
+          background-color: #bbb;
+          border-radius: 50%;
+          display: inline-block;"></span>
+          <div class="bg-danger bg-gradient col-9 py-1 mt-5 text-center" style="border-radius:167px ; ">
+            <h6><i class="fa-solid fa-user-gear"></i>  Supertramp </h6>
+           </div>
+
+            <div class="bg-danger bg-gradient col-12 py-2 mt-5" style="border-radius:14px ; ">
+             <h6>Profile</h6>
+            </div>
+            <div  class="bg-danger bg-gradient col-12 py-2 mt-5" style="border-radius:14px  ;">
+             <h6>PRO management</h6>
+            </div>
+            <div  class="bg-danger bg-gradient col-12 py-2 mt-5 mb-3" style="border-radius:14px  ;">
+             <h6>Help desk</h6>
+            </div>
+         
+         
+         </div>
+         
+         
+         
+         
+         
+         <div class="container mt-5 col-lg-8 col-md-6 co-sm-4 " style="font-size:15px ;">
+
+            <h1 class="bg-gradient text-white" >Add Banner</h1>
+         
+           <div class="row col-lg-6 col-9 ">
+
+  <form action="/admin/addonebanner" method="post" enctype="multipart/form-data">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Banner Name</label>
+      <input type="text" required class="form-control" name="Name" id="inputEmail4" placeholder="Name">
+    </div>
+     <div class="form-group col-md-6">
+  <label for="inputEmail4">offer%</label>
+      <input type="number" required class="form-control" name="offer"  placeholder="offer in percentege">
+    </div>
+   
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Description</label>
+    <input type="text" required class="form-control" id="inputAddress" name="description" placeholder="Description about the product">
+  </div>
+
+
+  <div class="form-group">
+    <input type="file" required name="bannerimage">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Add Banner</button>
+</form>
+</div>
+
+         
+         
+         
+         
+         
+         
+         
+         </div>
+         
+         
+
+
+    </div>
+
+

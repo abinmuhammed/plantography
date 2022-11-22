@@ -1,0 +1,100 @@
+
+
+
+{{#if noheader}}
+{{else}}
+<style>
+
+	@media screen and (max-width: 1432px) and (min-width: 991px) {
+  
+}
+</style>
+
+	<header>
+
+<div class="container-row  " style="background-color:RGB(39, 83, 29) ; height: 25px; color: aliceblue;">
+
+	<p class="text-start ms-4 diwali" > Diwali sale is live</p>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light  " style=" font-family: 'Arima Madurai', cursive;" >
+	<a class="navbar-brand " href="#"> <img src="/images/Group 40.png" class="img-fluid" alt="Responsive image"></a>
+	<button class="navbar-toggler bg-dark bg-gradient	col-sm-1" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon mt-1" style="color:RGB(62, 128, 32); font-weight: 700;"><i class="fa-solid fa-angles-down"></i></span>
+	</button>
+  
+	<div class="collapse navbar-collapse divone bg-dark py-3 bg-gradient   " id="navbarSupportedContent">
+	  <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-2 ml-4 " style="font-size:13px ;">
+		<li class="nav-item active">
+		  <a class="nav-link ml-md-2 text-white  font-weight-bold" href="/">HOME <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item  font-weight-bold">
+		  <a class="nav-link ml-md-2 text-white" href="#">PLANT CARING </a>
+		</li>
+		<li class="nav-item ml-md-2 font-weight-bold ">
+			<a class="nav-link text-white" href="#">ABOUT  </a>
+		  </li>
+		 
+		  <li class="nav-item ml-md-2 font-weight-bold ">
+			<a class="nav-link text-white" href="/cart">CART <span id="cartcount" class="badge badge-success">{{cartcount}}</span> </a>
+		  </li>
+		<li class="nav-item ml-md-2  font-weight-bold	">
+            <div class="btn-group dropright">
+                <button type="button" class="btn text-white dropdown-toggle font-weight-bold" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               PLANTS
+                </button>
+                <div class="dropdown-menu" x-placement="right-start" style="box-shadow:2px 2px ; background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); position: absolute; transform: translate3d(60px, 0px, 0px); top: 0px; left: 0px; will-change: transform;">
+                     {{#each catogories}}
+				  <a class="dropdown-item  " href="/categoryselected/{{this.category}}" >{{this.category}}</a>
+          {{/each}}
+                </div>
+              </div>
+              
+		</li>
+			
+		 	<li class="nav-item ml-md-2 font-weight-bold ">
+			<a class="nav-link text-white" href="/myaccount">MY ACCOUNT </a>
+		  </li>
+		<li class="nav-item bg-gradient ml-md-2  " style="font-weight:800 ; ">
+			<a class="nav-link  text-white font-weight-bold" href="# "> <form action="/searchproduct" method="post" ><input type="search" name="searchvalue" placeholder="Search.."> <button class="btn border-dark">search</button></form></a>
+		  </li>
+		    <li class="nav-item ml-md-1  font-weight-bold ">
+			<a class="nav-link text-white" href="/wishlist"><i class="fa-solid fa-heart"></i></a>
+		  </li>
+		  	  <li class="nav-item ml-md-1 font-weight-bold float-right ">
+			<a class="nav-link text-white" href="/cart"><i class="fa-solid fa-cart-shopping"></i> </a>
+		  </li>
+		  <li class="nav-item font-weight-bold  align d-flex justify-content-end ml-lg-0 pl-lg-1 ">
+			<div class="dropdown ml-md-1 pl-lg-1 ">
+				<button class="btn bg-gradient btn-dark dropdown-toggle ml-auto" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				{{#if  user}}
+				{{user.Firstname}} {{user.Lastname}}
+                 {{else}}
+			      ACCOUNT
+				{{/if}}
+
+				</button>
+				<div class="dropdown-menu" style="border-box" aria-labelledby="dropdownMenu1">
+					{{#if user}}
+					<a class="dropdown-item btn btn-success" href="/myprofile">Profile</a>
+					 <a class="dropdown-item btn btn-success" href="/myorders">My orders</a>
+					
+					 <a class="dropdown-item btn btn-success" href="/userlogout">Logout</a>
+					
+					{{else}}
+					
+				  <a class="dropdown-item" href="/usersignin">Login</a>
+				 {{/if}}
+				</div>
+			  </div>
+			  
+		  </li>
+	  </ul>
+	
+	</div>
+  </nav>
+
+
+	</header>
+
+  {{/if}}
