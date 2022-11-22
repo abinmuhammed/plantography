@@ -1,11 +1,12 @@
+require('dotenv').config()
 const mongoClient=require('mongodb').MongoClient
 const state={
     db:null
 }
-const uri="mongodb+srv://abin:123@cluster0.kjp7ya6.mongodb.net/?retryWrites=true&w=majority"
+const uri=
 
 module.exports.connect=function (done){
-    const url=uri
+    const url=process.env.MONGODB_ATLAS
     const dbname="PLANTOGRAPHY"
     
 

@@ -8,7 +8,7 @@ const userhelpers = require("../helpers/user-helpers");
 var router = express.Router();
 let swal = require("sweetalert");
 var paypal = require("paypal-rest-sdk");
-
+require('dotenv').config()
 var Handlebars = require('handlebars');
 
 
@@ -16,6 +16,7 @@ var Handlebars = require('handlebars');
 // var client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_TOKEN);
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const serviceid = process.env.TWILIO_ACCOUNT_SERVICE_ID
 const client = require('twilio')(accountSid, authToken);
 
 client.verify.v2.services
@@ -35,10 +36,8 @@ const varifylogin = (req, res, next) => {
 // configure paypal with the credentials you got when you created your paypal app
 paypal.configure({
   mode: "sandbox", //sandbox or live
-  client_id:
-    "ARbMZjTTRpemtZdjmy4tdb1glPA3BlT1Q9Tr5s0nSIe14MopaMRs0m-v8FiEm-ZiyumpNTsP7cCkoMhM", // please provide your client id here
-  client_secret:
-    "EFSxX6Dw_2xUGeNO22CsNdo2SZS0Ow3NTU8UbWcdRvtIgHj1WmVFfJlKn0NdI_ESrJe3wqz4F99T0wlO", // provide your client secret here
+  client_id: process.env.PAYPAL_SANDBOX_CLIENT_ID, // please provide your client id here
+  client_secret: process.env.PAYPAL_SANDBOX_CLIENT_SECRET, // provide your client secret here
 });
 
 /* GET home page. */
@@ -776,7 +775,7 @@ router.post('/sendotp', (req, res) => {
       let ph_no = (`+91${req.body.number}`)
       req.session.number = ph_no;
       console.log("456");
-      client.verify.v2.services('VA77cf0d1f5b82e0357bf810d15d193c22')
+      client.verify.v2.services(serviceid)
         .verifications
         .create({ to: ph_no, channel: 'sms' })
         .then(verification => {
@@ -799,7 +798,7 @@ router.post('/verifyotp', (req, res) => {
   console.log(req.session.number);
   let ph_no = req.session.number
   let otp = req.body.otp
-  client.verify.v2.services('VA77cf0d1f5b82e0357bf810d15d193c22')
+  client.verify.v2.services(serviceid)
     .verificationChecks
     .create({ to: ph_no, code: otp })
     .then(verification_check => {

@@ -17,8 +17,8 @@ var paypal = require("paypal-rest-sdk");
 require('dotenv').config()
 
 var instance = new Razorpay({
-  key_id: "rzp_test_wdsDxzRwb6eQj9",
-  key_secret: "juaYpXr4lxA88tWYxArOq4iU",
+  key_id: process.env.RAZORPAY_KEY_ID,
+  key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
 paypal.configure({
