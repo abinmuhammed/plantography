@@ -170,7 +170,7 @@ module.exports = {
               }
             )
             .then(() => {
-              resolve();
+              resolve({status:true});
             });
         }
       } else {
@@ -495,7 +495,7 @@ module.exports = {
   cancelorder: (orderid) => {
     return new Promise(async (resolve, reject) => {
       var dt = dateTime.create();
-      let obj = { iscancel: "true", cancelleddate: dt.format("Y-m-d ") };
+      let obj = { iscancel: "true", cancelleddate: dt.format("Y-m-d "),status:"canceled" };
       await db
         .get()
         .collection(collection.ORDER_COLLECTION)
@@ -1112,9 +1112,16 @@ module.exports = {
   },
 
   coupenfinder:(coupenid)=>{
+    
     return new Promise(async(resolve,reject)=>{
       let appliedcoupen= await db.get().collection(collection.COUPEN_COLLECTION).findOne({_id:objectid(coupenid)})
-      resolve(appliedcoupen)
+      if(appliedcoupen){
+
+        resolve(appliedcoupen)
+      }else{
+        resolve()
+      }
+     
     })
   },
 
@@ -1139,7 +1146,8 @@ module.exports = {
       }else{
       coupenObj={
         Retotal:total,
-        offerprice:"Minimum Purchase Required...!"
+        offerprice:"Minimum Purchase Required...!",
+        coupenid:coupen._id
       }
       resolve(coupenObj)
       }
@@ -1217,7 +1225,7 @@ searchproduct:(searchvalue)=>{
   {
       catogory: { $regex: ".*" + searchvalue + ".*", $options: "i" }
                }).toArray()
-console.log(product);
+console.log(product,"searched products");
 resolve(product)
   })
 },

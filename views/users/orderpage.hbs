@@ -129,7 +129,7 @@
     <label class="form-check-label" for="flexRadioDefault1">
       Selected
     </label>
-     <button class="btn btn-danger float-end" onclick=" deleteaddress('{{this.id}}')" type="submit" style="font-size:x-small;"><i class="fa-solid fa-trash-can"></i></button>
+     <button class="btn btn-danger float-end" onclick=" confirmdelete('{{this.id}}')" type="submit" style="font-size:x-small;"><i class="fa-solid fa-trash-can"></i></button>
   </div>
   <div class="card my-4 ml-2 shadow-3" style="border-radius:19px;">
 
@@ -510,13 +510,35 @@ var rzp1 = new Razorpay(options);
          },
          method:'post',
          success:(response)=>{
-          alert("success")
+          
           location.reload()
          }
 
 
     })
   }
+
+  function confirmdelete (uid){
+    swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this saved Address",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    console.log("768")
+
+    deleteaddress(uid)
+    swal("Poof! Your saved Address  has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your file is safe!");
+  }
+});
+  } 
 
 
 

@@ -54,7 +54,7 @@ router.get("/", async function (req, res, next) {
   }
 
   product_helpers.getthenewarrival().then((newarrival) => {
-    
+    console.log(newarrival,"908");
     product_helpers.getallcategorylist().then((catogories) => {
       if (user) {
         product_helpers.getlowprice().then((lowprice) => {
@@ -268,9 +268,10 @@ router.post('/applycoupen',async(req,res)=>{
   if(user){
     console.log('098')
     let totalprice= await userhelpers.getsum(req.session.user._id)
-    let applied= await userhelpers.coupenfinder(req.body.coupenid)
+    let applied = await userhelpers.coupenfinder(req.body.coupenid)
     console.log(applied);
    userhelpers.coupenapplied(applied,totalprice).then((price)=>{
+    console.log("ivide aayi")
     console.log(price); 
         res.json(price)
       })
@@ -425,13 +426,20 @@ router.get("/myorders", async (req, res) => {
 router.get("/viewproducts/:id", async (req, res) => {
   let user = req.session.user;
   console.log(req.params.id,"987");
+  Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+    if (v1 === v2) {
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  });
   if (user) {
 
     let details = await userHelpers.gettheorderdetails2(req.params.id);
     let products = await userHelpers.getproducttoorderpage(req.params.id);
    
    
-    console.log(details,'9879867');
+    console.log(details,'details');
+    console.log(products,'products');
     res.render("users/viewproducts", { user, products, details });  
   }
 });
@@ -578,9 +586,10 @@ router.post("/placeorderbyselectingaddress", async (req, res) => {
           console.log('098')
           let totalsum= await userhelpers.getsum(req.session.user._id)
           let applied= await userhelpers.coupenfinder(req.body.coupenid)
-          console.log(applied);
+          console.log(applied,"98");
         await userhelpers.coupenapplied(applied,totalsum).then((price)=>{
-          console.log(price); 
+      
+          console.log(price,"876"); 
           totalprice=(price.Retotal)
 
             })
@@ -836,10 +845,6 @@ router.post('/return-the-product',(req,res)=>{
 })
 
 // search products
-
-// router.get('/searchpage',(req,res)=>{
-//   res.render('users/searchpage')
-// })
 
 router.post('/searchproduct',varifylogin,(req,res)=>{
   console.log(req.body.searchvalue);

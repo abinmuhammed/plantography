@@ -4,10 +4,31 @@
   43%, rgb(170, 198, 178) 100%); background-attachment: fixed; font-family:
   'Arima Madurai', cursive; }
 
+
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgb(50, 45, 45);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
 </style>
 
   
-  <div class="  bg-gradient py-1 pl-3 text-white text-center " style="  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
+  <div class="  bg-gradient py-1 pl-3 text-white text-center " style="  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; ">
     <h3>Manage Users <i class="fa-solid fa-user"></i></h3>
 
   </div >
@@ -15,7 +36,7 @@
 
   <div class="container" >
 
-	<table class="table  table-striped table-dark">
+	<table class="table  table-striped table-dark" style="border-radius:20px;" >
 		<thead>
 		  <tr>
 			 <th class="d-none d-md-table-cell" scope="row"><span
@@ -24,6 +45,7 @@
 			<th >first name</th>
 			<th  class="d-none d-md-table-cell d-lg-table-cell">last name</th>
 			 <th  class="d-none d-lg-table-cell">Email</th>
+			 <th  class="d-none d-lg-table-cell">Status</th>
 			 <th></th>
 		  </tr>
 		</thead>
@@ -36,9 +58,12 @@
 			<td>{{this.Firstname}}</td>
 			<td class="d-none d-lg-table-cell d-md-table-cell">{{this.Lastname}}</td>
 			<td class="d-none d-lg-table-cell">{{this.Email}}</td>
+			
 			{{#if  this.isblocked}}
+			<td class="d-none d-lg-table-cell text-danger font-weight-bolder" style="font-size: 15px;">InActive <i class="fa-solid fa-circle-exclamation"></i></td>
 		    <td> <a href="/admin/userunblock/{{this._id}}" class="btn btn-primary "> Unblock</a>  </td>
 		     {{else }}
+			 <td class="d-none d-lg-table-cell font-weight-bolder text-success">Active <i class="fa-solid fa-circle-dot"></i></td>
 			   <td> <a href="/admin/userblock/{{this._id}}" class="btn btn-warning "> Block</a>  </td>
 			   {{/if}}
 		  </tr>
@@ -49,7 +74,36 @@
   </div>
 
 
+<button onclick="topFunction()"  id="myBtn" title="Go to top"><i class="fa-solid fa-angles-up"></i></button>
+<div class="bg-gradient text-center text-white"  style="background-color:RGB(60, 100, 51) ;">
+<p class="mt-2 mb-2" style="opacity: 20%;">2020 © copyright @Plantography</p>
+</div>
+
+
 <script>
       var divs = document.querySelectorAll('.create_index'); for (var i = 0; i <
       divs.length; ++i) { divs[i].innerHTML = i + 1; }
     </script>
+
+	
+<script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>

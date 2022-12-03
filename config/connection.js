@@ -6,7 +6,8 @@ const state={
 const uri=
 
 module.exports.connect=function (done){
-    const url=process.env.MONGODB_ATLAS
+    // const url=process.env.MONGODB_ATLAS
+    const url="mongodb://localhost:27017"
     const dbname="PLANTOGRAPHY"
     
 

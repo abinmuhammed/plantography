@@ -8,12 +8,16 @@ function addtocart(proid){
         url:'/addtocart/'+proid,
         method:'get',
         success:(response)=>{
-            if(response){
+            if(response.status){
+              console.log("hlo")
              
               console.log("908");
+
                     let count=$('#cartcount').html()
                     count=parseInt(count)+1
+                    console.log(count)
                     $("#cartcount").html(count)
+                    
             }
             
         }

@@ -13,7 +13,7 @@ let dateTime = require("node-datetime");
 
 /* GET users listing. */
 const adminname = "abin";
-const prepass = 123456;
+const prepass = 1;
 const multerStorage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './public/product_images')
@@ -174,13 +174,13 @@ router.get("/userblock/:id", (req, res) => {
     console.log(req.params.id);
     req.session.BError = true;
     req.session.user = null;
-    res.redirect("/admin/adminhome");
+    res.redirect("/admin/userdetails");
   });
 });
 
 router.get("/userunblock/:id", (req, res) => {
   userHelpers.unblockuser(req.params.id).then(() => {
-    res.redirect("/admin/adminhome");
+    res.redirect("/admin/userdetails");
   });
 });
 
@@ -562,6 +562,24 @@ router.post('/deletecoupen',(req,res)=>{
   product_helpers.deletecoupen(req.body.coupenid).then(()=>{
     res.json({status:true})
   })
+})
+
+// viewproductspage
+
+router.get('/viewproducts/:id',async (req,res)=>{
+console.log(req.params.id)
+let details = await userHelpers.gettheorderdetails2(req.params.id);
+    let products = await userHelpers.getproducttoorderpage(req.params.id);
+   
+  res.render('admin/viewproductsadmin',{admin:true,details,products})
+Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+  if (v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
+
 })
 
 
