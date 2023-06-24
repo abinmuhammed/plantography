@@ -32,17 +32,22 @@ module.exports = {
 
   getthenewarrival: () => {
     return new Promise(async (resolve, reject) => {
-      let newarrival = await db
-        .get()
-        .collection(collection.PRODUCT_COLLECTIONS)
-        .find({stock:{$gte:1}})
-        .sort({ _id: -1 })
-        .limit(4)
-        .toArray();
-
-      resolve(newarrival);
+      try {
+        let newarrival = await db
+          .get()
+          .collection(collection.PRODUCT_COLLECTIONS)
+          .find({ stock: { $gte: 1 } })
+          .sort({ _id: -1 })
+          .limit(4)
+          .toArray();
+  
+        resolve(newarrival);
+      } catch (error) {
+        reject(error);
+      }
     });
   },
+  
   getlowprice: () => {
     return new Promise(async (resolve, reject) => {
       let lowprice = db
