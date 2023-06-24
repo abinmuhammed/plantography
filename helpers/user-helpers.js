@@ -11,8 +11,9 @@ const { parse } = require("handlebars");
 let dateTime = require("node-datetime");
 var { uid } = require("uid");
 const Razorpay = require("razorpay");
-const { resolve } = require("node:path");
-const { count } = require("node:console");
+const { resolve } = require("path");
+const { count } = require("console");
+
 var paypal = require("paypal-rest-sdk");
 require('dotenv').config()
 
